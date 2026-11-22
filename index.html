@@ -14,45 +14,52 @@
   .hero p{font-size:13px;color:#000;font-weight:bold;margin-top:6px;letter-spacing:1px}
   .desc{background:#1E1E1E;border:1px solid #333;border-radius:16px;padding:18px;font-size:15px;line-height:1.7;color:#E5E5E5;margin-bottom:22px;text-align:center}
   .desc b{color:#FFD21F}
-  .section-title{font-size:20px;font-weight:900;margin:22px 0 14px;text-align:center;letter-spacing:1px}
+  .section-title{font-size:20px;font-weight:900;margin:22px 0 14px;text-align:center;letter-spacing:1px;line-height:1.3}
   .section-title span{color:#FFD21F}
   .card{background:#1E1E1E;border-radius:12px;overflow:hidden;border:1px solid #333;margin-bottom:16px}
   .card img{width:100%;display:block}
   .card-body{padding:14px}
-  .card-body h3{font-size:16px;line-height:1.4;margin-bottom:6px}
+  .card-body h3{font-size:16px;line-height:1.4;margin-bottom:6px;overflow-wrap:break-word}
   .card-body span{font-size:12px;color:#AAA}
   .card-body a{display:inline-block;margin-top:10px;background:#FFD21F;color:#000;text-decoration:none;padding:9px 16px;border-radius:20px;font-size:13px;font-weight:bold;margin-right:6px}
   .card-body a.btn-dark{background:#fff;color:#000}
   .card.lochot{border:1px solid #FFD21F}
   .card.new{border:1px solid #FFD700}
-  .badge{background:#FFD700;color:#000;font-size:11px;padding:2px 7px;border-radius:10px;vertical-align:middle}
-  .badge-lochot{background:#FFD21F;color:#000;font-size:11px;padding:2px 7px;border-radius:10px;vertical-align:middle}
+  .badge{background:#FFD700;color:#000;font-size:11px;padding:2px 7px;border-radius:10px;vertical-align:middle;white-space:nowrap}
+  .badge-lochot{background:#FFD21F;color:#000;font-size:11px;padding:2px 7px;border-radius:10px;vertical-align:middle;white-space:nowrap}
   .cta{text-align:center;margin-top:26px;background:#1E1E1E;border-radius:16px;padding:20px;border:1px solid #FFD21F}
   .cta p{font-size:14px;line-height:1.6;color:#DDD;margin-bottom:12px}
   .cta a{display:inline-block;background:#FFD21F;color:#000;text-decoration:none;padding:12px 20px;border-radius:22px;font-weight:900}
   .footer{text-align:center;color:#888;font-size:12px;margin-top:20px;line-height:1.6}
 
-  /* ===== KHUSUS LAYAR GEDE / LAPTOP / PC - HP GAK KENA! ===== */
-  @media (min-width: 768px){
+  /* TABLET: juga udah sebaris kayak LOCHOT */
+  @media (min-width: 700px) and (max-width: 999px){
+    .wrap{max-width:850px}
+    .grid .card, .card.lochot{display:flex;align-items:stretch}
+    .grid .card a:first-child, .card.lochot a:first-child{width:50%;flex-shrink:0}
+    .grid .card img, .card.lochot img{height:100%;object-fit:cover}
+    .grid .card .card-body, .card.lochot .card-body{padding:20px;display:flex;flex-direction:column;justify-content:center}
+    .grid .card .card-body h3{font-size:19px}
+  }
+  /* LAPTOP / PC: SEMUA LAGU JADI SEBARIS-SEBARIS KAYAK LOCHOT */
+  @media (min-width: 1000px){
     body{padding:30px}
-    .wrap{max-width:1100px}
+    .wrap{max-width:1200px}
     .hero{padding:50px 30px}
     .hero h1{font-size:52px}
     .hero p{font-size:16px}
     .desc{padding:28px 40px;font-size:17px;max-width:900px;margin-left:auto;margin-right:auto}
     .section-title{font-size:28px;margin:35px 0 20px}
-    /* Lagu Dedi Sutayat jadi 3 kolom */
-    .grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:18px}
-    .grid .card{margin-bottom:0}
-    /* Card LOCHOT jadi lebar, gambar kiri teks kanan */
-    .card.lochot{display:flex;align-items:stretch}
-    .card.lochot a:first-child{width:55%;flex-shrink:0}
-    .card.lochot img{height:100%;object-fit:cover}
-    .card.lochot .card-body{padding:24px;display:flex;flex-direction:column;justify-content:center}
-    .card.lochot .card-body h3{font-size:22px}
-  }
-  @media (min-width: 1024px){
-    .wrap{max-width:1200px}
+    /* INI KUNCINYA: grid dimatiin, jadi 1 kolom ke bawah */
+    .grid{display:block}
+    .grid .card{margin-bottom:18px}
+    /* SEMUA CARD JADI GAMBAR KIRI - TEKS KANAN */
+    .card.lochot, .grid .card{display:flex;align-items:stretch}
+    .card.lochot a:first-child, .grid .card a:first-child{width:55%;flex-shrink:0}
+    .card.lochot img, .grid .card img{height:100%;object-fit:cover}
+    .card.lochot .card-body, .grid .card .card-body{padding:24px;display:flex;flex-direction:column;justify-content:center}
+    .card.lochot .card-body h3, .grid .card .card-body h3{font-size:22px}
+    .grid .card .card-body a{padding:12px 22px;font-size:14px}
   }
 </style>
 </head>
@@ -86,8 +93,6 @@
     </div>
   </div>
   <div class="section-title">🎤 KARYA <span>DEDI SUTAYAT</span><br><span style="font-size:13px;color:#AAA;font-weight:400">Diproduksi oleh LOCHOT MUSIC PRODUCTION</span></div>
-
-  <!-- DI SINI YANG BEDA: DIBUNGKUS <div class="grid"> BIAR DI WEB JADI 3 KOLOM -->
   <div class="grid">
   <div class="card"><a href="https://youtu.be/aM31ZWWeF4U" target="_blank"><img src="https://i.ytimg.com/vi/aM31ZWWeF4U/hqdefault.jpg"></a><div class="card-body"><h3>1. Dedi Sutayat - Obat Seumur Hidup (Single) [Official Music Lyric Video]</h3><span>3.58 • Dedi Sutayat</span><br><a href="https://youtu.be/aM31ZWWeF4U" target="_blank">▶ Tonton di YouTube</a></div></div>
   <div class="card"><a href="https://youtu.be/jM_dkFftIEE" target="_blank"><img src="https://i.ytimg.com/vi/jM_dkFftIEE/hqdefault.jpg"></a><div class="card-body"><h3>2. Dedi Sutayat - Obat Seumur Hidup (Slow Remix) [Official Music Lyric Video]</h3><span>3.44 • Dedi Sutayat</span><br><a href="https://youtu.be/jM_dkFftIEE" target="_blank">▶ Tonton di YouTube</a></div></div>
@@ -96,7 +101,6 @@
   <div class="card"><a href="https://youtu.be/jRSKHtACRyg" target="_blank"><img src="https://i.ytimg.com/vi/jRSKHtACRyg/hqdefault.jpg"></a><div class="card-body"><h3>5. Dedi Sutayat - Nyaris Menyerah (HipDut Version) [Official Music Lyric Video]</h3><span>2.56 • Dedi Sutayat</span><br><a href="https://youtu.be/jRSKHtACRyg" target="_blank">▶ Tonton di YouTube</a></div></div>
   <div class="card new"><a href="https://youtu.be/O0sRtx0Ksag" target="_blank"><img src="https://i.ytimg.com/vi/O0sRtx0Ksag/hqdefault.jpg"></a><div class="card-body"><h3>6. Dedi Sutayat - Selingkuh Di Dalam Pelangi [Official Music Lyric Video] <span class="badge">NEW</span></h3><span>NEW • Dedi Sutayat</span><br><a href="https://youtu.be/O0sRtx0Ksag" target="_blank">▶ Tonton di YouTube</a></div></div>
   </div>
-
   <div class="cta"><p>Mau bikin lagu juga?<br>Hubungi LOCHOT MUSIC PRODUCTION untuk produksi musik digital kamu!</p><a href="https://dedisutayat.github.io/">Hubungi Kami →</a></div>
   <div class="footer">© 2026 LOCHOT MUSIC PRODUCTION<br>Produksi Musik Digital • Cilacap, Indonesia</div>
 </div>
